@@ -40,17 +40,12 @@ def show_details(name):
 def add_contact():
     newName = input("Name?")
     newNum = input("Number?")
-    if(len(newName) != 0 and len(newNum) != 0):
-        contacts[newName] = newNum
+    if(len(newName) != 0 and len(newNum) != 0 and newName not in contacts):
+        contacts[newName] = [newNum]
+    elif(newName in contacts):
+        print("Such a name already exists in the contacts!")
     else:
         print("The name or the number are not filled!")
-    
-
-contacts = {
-    "Cecilia" : "31975613",
-    "Alice" : "12345678",
-    "Bob" : "23456789"
-}
 
 def del_contact(): # Slet kontakt funktion
     deleteContact = input("Which contact do you want to delete?\n > ") # Brugeren indtaster selve navnet
@@ -59,6 +54,22 @@ def del_contact(): # Slet kontakt funktion
         print(f"{deleteContact} has been deleted.") # "f" i vores print er fordi ellers kan vi ikke få {deleteContact} med 
     else:
         print(f"Contact '{deleteContact}' not found.") # "f" i vores print er fordi ellers kan vi ikke få {deleteContact} med
+
+def add_num_to_contact():
+    addName = input("Who to add number to? name> ")
+    addNum = input("Number to add number> ")
+
+    if(addName in contacts):
+        contacts[addName].append(addNum)
+    else:
+        print("Such a person was not found in the contacts!")
+    
+
+contacts = {
+    "Isakohackeren" : ["31975613"],
+    "Eugen" : ["53641082"],
+    "Noah Alexander Den 1" : ["30551533"]
+}
 
 while True:
     print()
@@ -76,7 +87,7 @@ while True:
         show_details(name)
     elif inp == 3: #add contact 
         add_contact()
-    elif inp == 4:
+    elif inp == 4: #delete contact
         del_contact()
-    elif inp == 5:
-        print("NOT IMPLEMENTED YET")
+    elif inp == 5: #add number to existing contact
+        add_num_to_contact()
