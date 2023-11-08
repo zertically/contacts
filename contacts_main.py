@@ -37,6 +37,15 @@ def show_details(name):
         print("Not found.")
     print("----------------")
 
+def add_contact():
+    newName = input("Name?")
+    newNum = input("Number?")
+    if(len(newName) != 0 and len(newNum) != 0):
+        contacts[newName] = newNum
+    else:
+        print("The name or the number are not filled!")
+    
+
 contacts = {
     "Cecilia" : "31975613",
     "Alice" : "12345678",
@@ -57,10 +66,9 @@ while True:
     elif inp == 2:
         name = input("Enter name: ")
         show_details(name)
-
-    elif inp == 3:
-        print("NOT IMPLEMENTED YET")
-    elif inp == 4: # Delete contact
+    elif inp == 3: #add contact 
+        add_contact()
+    elif inp == 4:
         print("NOT IMPLEMENTED YET")
     elif inp == 5:
-        print("NOT IMPLEMENTED YETti")
+        print("NOT IMPLEMENTED YET")
