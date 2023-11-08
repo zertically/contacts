@@ -52,6 +52,14 @@ contacts = {
     "Bob" : "23456789"
 }
 
+def del_contact(): # Slet kontakt funktion
+    deleteContact = input("Which contact do you want to delete?\n > ") # Brugeren indtaster selve navnet
+    if deleteContact in contacts: 
+        del contacts[deleteContact] # Den fjerner quite literally vores value ved bare at tage den string vi inputter i vores "deleteContact" input line
+        print(f"{deleteContact} has been deleted.") # "f" i vores print er fordi ellers kan vi ikke få {deleteContact} med 
+    else:
+        print(f"Contact '{deleteContact}' not found.") # "f" i vores print er fordi ellers kan vi ikke få {deleteContact} med
+
 while True:
     print()
     inp = menu()
@@ -69,6 +77,6 @@ while True:
     elif inp == 3: #add contact 
         add_contact()
     elif inp == 4:
-        print("NOT IMPLEMENTED YET")
+        del_contact()
     elif inp == 5:
         print("NOT IMPLEMENTED YET")
